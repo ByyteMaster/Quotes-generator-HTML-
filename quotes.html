@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspiration Quotes Universe</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    padding:20px;
+    background:rgba(0,0,0,0.3);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav h1{
+    text-align:center;
+    font-size:32px;
+    letter-spacing:2px;
+}
+
+/* HERO SECTION */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h2{
+    font-size:65px;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.hero p{
+    font-size:22px;
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+button{
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+    background:#3b82f6;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#2563eb;
+}
+
+/* QUOTES SECTION */
+
+.quotes-section{
+    padding:80px 40px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:50px;
+}
+
+.quotes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.quote-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:20px;
+    transition:0.4s;
+    backdrop-filter:blur(10px);
+}
+
+.quote-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.quote{
+    font-size:24px;
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.author{
+    color:#38bdf8;
+    font-size:18px;
+}
+
+/* LIVE QUOTE */
+
+.live-quote{
+    padding:100px 20px;
+    text-align:center;
+    background:#111827;
+}
+
+.live-quote h2{
+    font-size:45px;
+    margin-bottom:30px;
+}
+
+#dynamicQuote{
+    font-size:35px;
+    max-width:900px;
+    margin:auto;
+    line-height:1.6;
+    color:#facc15;
+}
+
+/* MOTIVATION COUNTER */
+
+.counter-section{
+    padding:80px 20px;
+}
+
+.counter-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+.counter-box{
+    background:#1e293b;
+    padding:40px;
+    border-radius:20px;
+    width:250px;
+    text-align:center;
+}
+
+.counter{
+    font-size:55px;
+    color:#22c55e;
+}
+
+.counter-box p{
+    margin-top:10px;
+    font-size:20px;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    background:#020617;
+    color:#94a3b8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .hero h2{
+        font-size:40px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    #dynamicQuote{
+        font-size:26px;
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+    <h1>✨ Inspiration Quotes Universe ✨</h1>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h2>
+            "Your Future Is Created By What You Do Today"
+        </h2>
+
+        <p>
+            Discover motivation, inspiration, and positivity
+            through powerful life-changing quotes.
+        </p>
+
+        <button onclick="generateQuote()">
+            Generate Quote
+        </button>
+
+    </div>
+
+</section>
+
+<!-- QUOTES SECTION -->
+
+<section class="quotes-section">
+
+    <h2 class="section-title">
+        🌟 Popular Quotes
+    </h2>
+
+    <div class="quotes-grid">
+
+        <div class="quote-card">
+            <div class="quote">
+                "Discipline is choosing between what you want now and what you want most."
+            </div>
+            <div class="author">— Abraham Lincoln</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="quote">
+                "Success doesn’t come from motivation. It comes from consistency."
+            </div>
+            <div class="author">— Unknown</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="quote">
+                "Push yourself because nobody else is going to do it for you."
+            </div>
+            <div class="author">— Anonymous</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="quote">
+                "Dream big. Start small. Act now."
+            </div>
+            <div class="author">— Robin Sharma</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="quote">
+                "Every expert was once a beginner."
+            </div>
+            <div class="author">— Helen Hayes</div>
+        </div>
+
+        <div class="quote-card">
+            <div class="quote">
+                "Small progress is still progress."
+            </div>
+            <div class="author">— Unknown</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LIVE QUOTE -->
+
+<section class="live-quote">
+
+    <h2>⚡ Dynamic Motivation Generator</h2>
+
+    <p id="dynamicQuote">
+        Click the button above to generate inspiration.
+    </p>
+
+</section>
+
+<!-- COUNTERS -->
+
+<section class="counter-section">
+
+    <h2 class="section-title">
+        🚀 Motivation Statistics
+    </h2>
+
+    <div class="counter-container">
+
+        <div class="counter-box">
+            <div class="counter" id="counter1">0</div>
+            <p>Quotes</p>
+        </div>
+
+        <div class="counter-box">
+            <div class="counter" id="counter2">0</div>
+            <p>Visitors Inspired</p>
+        </div>
+
+        <div class="counter-box">
+            <div class="counter" id="counter3">0</div>
+            <p>Dreams Started</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>✨ Keep Growing Every Day ✨</h2>
+
+    <p style="margin-top:15px;">
+        Built with HTML, CSS & JavaScript
+    </p>
+
+</footer>
+
+<script>
+
+/* QUOTES ARRAY */
+
+const quotes = [
+
+"Your only limit is your mind.",
+
+"Work hard in silence. Let success make the noise.",
+
+"Success starts with self-discipline.",
+
+"Focus on progress, not perfection.",
+
+"You become what you believe.",
+
+"Never stop learning because life never stops teaching.",
+
+"Fear kills more dreams than failure ever will.",
+
+"Consistency creates greatness.",
+
+"The best time to start was yesterday. The next best time is now.",
+
+"Great things never come from comfort zones."
+
+];
+
+/* GENERATE QUOTE */
+
+function generateQuote(){
+
+    let random =
+        Math.floor(Math.random() * quotes.length);
+
+    document.getElementById("dynamicQuote")
+        .innerHTML = '"' + quotes[random] + '"';
+
+}
+
+/* COUNTER ANIMATION */
+
+function animateCounter(id,target,speed){
+
+    let count = 0;
+
+    let interval = setInterval(function(){
+
+        count += Math.ceil(target / speed);
+
+        if(count >= target){
+
+            count = target;
+            clearInterval(interval);
+
+        }
+
+        document.getElementById(id).innerHTML = count;
+
+    },20);
+
+}
+
+animateCounter("counter1",500,100);
+animateCounter("counter2",10000,150);
+animateCounter("counter3",2500,120);
+
+/* AUTO CHANGING BACKGROUND */
+
+const colors = [
+
+"#0f172a",
+"#111827",
+"#1e293b",
+"#172554",
+"#312e81"
+
+];
+
+let colorIndex = 0;
+
+setInterval(function(){
+
+    document.body.style.background =
+        colors[colorIndex];
+
+    colorIndex++;
+
+    if(colorIndex >= colors.length){
+        colorIndex = 0;
+    }
+
+},4000);
+
+</script>
+
+</body>
+</html>
