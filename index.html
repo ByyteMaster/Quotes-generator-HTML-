@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Inspiration Quotes Universe</title>
 
 <style>
@@ -11,13 +12,14 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
     background:linear-gradient(135deg,#0f172a,#1e293b);
     color:white;
     overflow-x:hidden;
+    transition:0.5s;
 }
 
 /* NAVBAR */
@@ -38,7 +40,7 @@ nav h1{
     letter-spacing:2px;
 }
 
-/* HERO SECTION */
+/* HERO */
 
 .hero{
     min-height:100vh;
@@ -47,10 +49,12 @@ nav h1{
     align-items:center;
     text-align:center;
     padding:40px;
+    position:relative;
 }
 
 .hero-content{
     max-width:900px;
+    animation:fadeIn 1.5s ease;
 }
 
 .hero h2{
@@ -74,6 +78,7 @@ button{
     transition:0.3s;
     background:#3b82f6;
     color:white;
+    margin:10px;
 }
 
 button:hover{
@@ -81,7 +86,23 @@ button:hover{
     background:#2563eb;
 }
 
-/* QUOTES SECTION */
+/* SEARCH BAR */
+
+.search-box{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.search-box input{
+    width:320px;
+    padding:15px;
+    border:none;
+    border-radius:40px;
+    outline:none;
+    font-size:16px;
+}
+
+/* QUOTES */
 
 .quotes-section{
     padding:80px 40px;
@@ -143,9 +164,10 @@ button:hover{
     margin:auto;
     line-height:1.6;
     color:#facc15;
+    transition:0.4s;
 }
 
-/* MOTIVATION COUNTER */
+/* COUNTER */
 
 .counter-section{
     padding:80px 20px;
@@ -164,6 +186,11 @@ button:hover{
     border-radius:20px;
     width:250px;
     text-align:center;
+    transition:0.4s;
+}
+
+.counter-box:hover{
+    transform:scale(1.05);
 }
 
 .counter{
@@ -176,6 +203,19 @@ button:hover{
     font-size:20px;
 }
 
+/* CLOCK */
+
+.clock-section{
+    text-align:center;
+    padding:60px 20px;
+}
+
+#clock{
+    font-size:45px;
+    color:#38bdf8;
+    margin-top:20px;
+}
+
 /* FOOTER */
 
 footer{
@@ -183,6 +223,76 @@ footer{
     text-align:center;
     background:#020617;
     color:#94a3b8;
+}
+
+/* PARTICLES */
+
+.particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.particles span{
+    position:absolute;
+    display:block;
+    width:20px;
+    height:20px;
+    background:rgba(255,255,255,0.1);
+    animation:move 20s linear infinite;
+    border-radius:50%;
+}
+
+@keyframes move{
+
+    0%{
+        transform:translateY(100vh) scale(0);
+    }
+
+    100%{
+        transform:translateY(-10vh) scale(1);
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* LIGHT MODE */
+
+.light-mode{
+    background:#f8fafc;
+    color:#111827;
+}
+
+.light-mode .quote-card{
+    background:white;
+    color:black;
+}
+
+.light-mode .counter-box{
+    background:white;
+    color:black;
+}
+
+.light-mode footer{
+    background:#e2e8f0;
+    color:black;
 }
 
 /* RESPONSIVE */
@@ -201,12 +311,27 @@ footer{
         font-size:26px;
     }
 
+    .section-title{
+        font-size:35px;
+    }
+
 }
 
 </style>
 
 </head>
+
 <body>
+
+<div class="particles">
+
+    <span style="left:10%; animation-delay:0s;"></span>
+    <span style="left:20%; animation-delay:2s;"></span>
+    <span style="left:40%; animation-delay:4s;"></span>
+    <span style="left:60%; animation-delay:1s;"></span>
+    <span style="left:80%; animation-delay:3s;"></span>
+
+</div>
 
 <!-- NAVBAR -->
 
@@ -233,6 +358,14 @@ footer{
             Generate Quote
         </button>
 
+        <button onclick="copyQuote()">
+            Copy Quote
+        </button>
+
+        <button onclick="toggleTheme()">
+            Toggle Theme
+        </button>
+
     </div>
 
 </section>
@@ -244,6 +377,17 @@ footer{
     <h2 class="section-title">
         🌟 Popular Quotes
     </h2>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search quotes..."
+            onkeyup="searchQuotes()"
+        >
+
+    </div>
 
     <div class="quotes-grid">
 
@@ -305,7 +449,7 @@ footer{
 
 </section>
 
-<!-- COUNTERS -->
+<!-- COUNTER -->
 
 <section class="counter-section">
 
@@ -334,6 +478,16 @@ footer{
 
 </section>
 
+<!-- CLOCK -->
+
+<section class="clock-section">
+
+    <h2>🕒 Current Time</h2>
+
+    <div id="clock"></div>
+
+</section>
+
 <!-- FOOTER -->
 
 <footer>
@@ -348,7 +502,7 @@ footer{
 
 <script>
 
-/* QUOTES ARRAY */
+/* QUOTES */
 
 const quotes = [
 
@@ -386,7 +540,61 @@ function generateQuote(){
 
 }
 
-/* COUNTER ANIMATION */
+/* COPY QUOTE */
+
+function copyQuote(){
+
+    let text =
+        document.getElementById("dynamicQuote").innerText;
+
+    navigator.clipboard.writeText(text);
+
+    alert("Quote Copied!");
+
+}
+
+/* SEARCH */
+
+function searchQuotes(){
+
+    let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let cards =
+        document.querySelectorAll(".quote-card");
+
+    cards.forEach(function(card){
+
+        let text =
+            card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            card.style.display = "block";
+
+        }
+
+        else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+/* THEME */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("light-mode");
+
+}
+
+/* COUNTER */
 
 function animateCounter(id,target,speed){
 
@@ -413,7 +621,25 @@ animateCounter("counter1",500,100);
 animateCounter("counter2",10000,150);
 animateCounter("counter3",2500,120);
 
-/* AUTO CHANGING BACKGROUND */
+/* CLOCK */
+
+function updateClock(){
+
+    let now = new Date();
+
+    let time =
+        now.toLocaleTimeString();
+
+    document.getElementById("clock")
+        .innerHTML = time;
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+/* BACKGROUND COLORS */
 
 const colors = [
 
@@ -435,7 +661,9 @@ setInterval(function(){
     colorIndex++;
 
     if(colorIndex >= colors.length){
+
         colorIndex = 0;
+
     }
 
 },4000);
