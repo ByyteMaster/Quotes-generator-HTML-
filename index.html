@@ -1,42 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>inspirations</title>  
+<title>Inspiration Universe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#0f172a,#1e293b);
-    color:white;
     overflow-x:hidden;
-    transition:0.5s;
+    background:linear-gradient(-45deg,#0f172a,#1e1b4b,#111827,#172554);
+    background-size:400% 400%;
+    animation:bgAnimation 15s ease infinite;
+    color:white;
+}
+
+/* ANIMATED BACKGROUND */
+
+@keyframes bgAnimation{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* PARTICLES */
+
+.particles{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.particles span{
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:rgba(255,255,255,0.15);
+    border-radius:50%;
+    animation:float 20s linear infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-10vh) scale(1.5);
+        opacity:0;
+    }
+
 }
 
 /* NAVBAR */
 
 nav{
     width:100%;
-    padding:20px;
-    background:rgba(0,0,0,0.3);
-    backdrop-filter:blur(10px);
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     position:sticky;
     top:0;
     z-index:1000;
+
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-nav h1{
-    text-align:center;
-    font-size:32px;
-    letter-spacing:2px;
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:#38bdf8;
+}
+
+nav button{
+    padding:12px 25px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#3b82f6,#06b6d4);
+    color:white;
+    cursor:pointer;
+    transition:0.4s;
+    font-weight:600;
+}
+
+nav button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
 /* HERO */
@@ -48,7 +119,6 @@ nav h1{
     align-items:center;
     text-align:center;
     padding:40px;
-    position:relative;
 }
 
 .hero-content{
@@ -56,148 +126,170 @@ nav h1{
     animation:fadeIn 1.5s ease;
 }
 
-.hero h2{
-    font-size:65px;
-    margin-bottom:20px;
+.hero h1{
+    font-size:75px;
     line-height:1.2;
+    margin-bottom:25px;
+    background:linear-gradient(to right,#38bdf8,#facc15);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .hero p{
     font-size:22px;
-    color:#cbd5e1;
-    margin-bottom:30px;
+    color:#d1d5db;
+    line-height:1.8;
+    margin-bottom:40px;
 }
 
-button{
-    padding:15px 35px;
+/* BUTTONS */
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 35px;
     border:none;
-    border-radius:40px;
-    font-size:18px;
+    border-radius:50px;
+    font-size:17px;
     cursor:pointer;
-    transition:0.3s;
-    background:#3b82f6;
+    transition:0.4s;
+    font-weight:600;
+}
+
+.primary{
+    background:linear-gradient(45deg,#3b82f6,#06b6d4);
     color:white;
-    margin:10px;
 }
 
-button:hover{
-    transform:scale(1.1);
-    background:#2563eb;
+.secondary{
+    background:rgba(255,255,255,0.08);
+    color:white;
+    border:1px solid rgba(255,255,255,0.1);
 }
 
-/* SEARCH BAR */
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
+}
 
-.search-box{
+/* QUOTE BOX */
+
+.quote-container{
+    margin-top:50px;
+    padding:40px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+#dynamicQuote{
+    font-size:32px;
+    line-height:1.7;
+    color:#facc15;
+}
+
+/* SEARCH */
+
+.search-section{
+    padding:80px 8%;
     text-align:center;
-    margin-bottom:50px;
-}
-
-.search-box input{
-    width:320px;
-    padding:15px;
-    border:none;
-    border-radius:40px;
-    outline:none;
-    font-size:16px;
-}
-
-/* QUOTES */
-
-.quotes-section{
-    padding:80px 40px;
 }
 
 .section-title{
-    text-align:center;
-    font-size:45px;
-    margin-bottom:50px;
+    font-size:50px;
+    margin-bottom:40px;
 }
 
+.search-box input{
+    width:350px;
+    max-width:90%;
+    padding:16px 25px;
+    border:none;
+    outline:none;
+    border-radius:50px;
+    background:rgba(255,255,255,0.08);
+    color:white;
+    font-size:16px;
+    backdrop-filter:blur(10px);
+}
+
+/* QUOTES GRID */
+
 .quotes-grid{
+    margin-top:60px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:30px;
 }
 
 .quote-card{
+    padding:35px;
+    border-radius:25px;
     background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
     border:1px solid rgba(255,255,255,0.1);
-    padding:30px;
-    border-radius:20px;
     transition:0.4s;
-    backdrop-filter:blur(10px);
 }
 
 .quote-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    transform:translateY(-12px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.35);
 }
 
 .quote{
-    font-size:24px;
+    font-size:22px;
+    line-height:1.7;
     margin-bottom:20px;
-    line-height:1.5;
 }
 
 .author{
     color:#38bdf8;
-    font-size:18px;
+    font-weight:600;
 }
 
-/* LIVE QUOTE */
+/* STATS */
 
-.live-quote{
-    padding:100px 20px;
-    text-align:center;
-    background:#111827;
+.stats{
+    padding:100px 8%;
 }
 
-.live-quote h2{
-    font-size:45px;
-    margin-bottom:30px;
-}
-
-#dynamicQuote{
-    font-size:35px;
-    max-width:900px;
-    margin:auto;
-    line-height:1.6;
-    color:#facc15;
-    transition:0.4s;
-}
-
-/* COUNTER */
-
-.counter-section{
-    padding:80px 20px;
-}
-
-.counter-container{
+.stats-container{
     display:flex;
+    gap:30px;
     justify-content:center;
     flex-wrap:wrap;
-    gap:40px;
 }
 
-.counter-box{
-    background:#1e293b;
+.stat-box{
+    width:260px;
     padding:40px;
-    border-radius:20px;
-    width:250px;
+    border-radius:25px;
     text-align:center;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+
     transition:0.4s;
 }
 
-.counter-box:hover{
+.stat-box:hover{
     transform:scale(1.05);
 }
 
 .counter{
-    font-size:55px;
+    font-size:60px;
     color:#22c55e;
+    font-weight:700;
 }
 
-.counter-box p{
+.stat-box p{
     margin-top:10px;
     font-size:20px;
 }
@@ -206,13 +298,14 @@ button:hover{
 
 .clock-section{
     text-align:center;
-    padding:60px 20px;
+    padding:80px 20px;
 }
 
 #clock{
-    font-size:45px;
+    font-size:55px;
     color:#38bdf8;
-    margin-top:20px;
+    margin-top:25px;
+    font-weight:700;
 }
 
 /* FOOTER */
@@ -220,49 +313,24 @@ button:hover{
 footer{
     padding:40px;
     text-align:center;
-    background:#020617;
-    color:#94a3b8;
+    margin-top:50px;
+
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    border-top:1px solid rgba(255,255,255,0.1);
 }
 
-/* PARTICLES */
-
-.particles{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    overflow:hidden;
-    z-index:-1;
+footer h2{
+    margin-bottom:15px;
 }
 
-.particles span{
-    position:absolute;
-    display:block;
-    width:20px;
-    height:20px;
-    background:rgba(255,255,255,0.1);
-    animation:move 20s linear infinite;
-    border-radius:50%;
-}
-
-@keyframes move{
-
-    0%{
-        transform:translateY(100vh) scale(0);
-    }
-
-    100%{
-        transform:translateY(-10vh) scale(1);
-    }
-
-}
+/* ANIMATION */
 
 @keyframes fadeIn{
 
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(40px);
     }
 
     to{
@@ -272,34 +340,12 @@ footer{
 
 }
 
-/* LIGHT MODE */
-
-.light-mode{
-    background:#f8fafc;
-    color:#111827;
-}
-
-.light-mode .quote-card{
-    background:white;
-    color:black;
-}
-
-.light-mode .counter-box{
-    background:white;
-    color:black;
-}
-
-.light-mode footer{
-    background:#e2e8f0;
-    color:black;
-}
-
-/* RESPONSIVE */
+/* MOBILE */
 
 @media(max-width:768px){
 
-    .hero h2{
-        font-size:40px;
+    .hero h1{
+        font-size:45px;
     }
 
     .hero p{
@@ -307,11 +353,15 @@ footer{
     }
 
     #dynamicQuote{
-        font-size:26px;
+        font-size:24px;
     }
 
     .section-title{
-        font-size:35px;
+        font-size:38px;
+    }
+
+    #clock{
+        font-size:38px;
     }
 
 }
@@ -322,20 +372,20 @@ footer{
 
 <body>
 
-<div class="particles">
-
-    <span style="left:10%; animation-delay:0s;"></span>
-    <span style="left:20%; animation-delay:2s;"></span>
-    <span style="left:40%; animation-delay:4s;"></span>
-    <span style="left:60%; animation-delay:1s;"></span>
-    <span style="left:80%; animation-delay:3s;"></span>
-
-</div>
+<div class="particles" id="particles"></div>
 
 <!-- NAVBAR -->
 
 <nav>
-    <h1>✨ Inspiration Quotes Universe ✨</h1>
+
+    <div class="logo">
+        ✨ Inspiration Universe
+    </div>
+
+    <button onclick="toggleTheme()">
+        Toggle Theme
+    </button>
+
 </nav>
 
 <!-- HERO -->
@@ -344,34 +394,42 @@ footer{
 
     <div class="hero-content">
 
-        <h2>
-            "Your Future Is Created By What You Do Today"
-        </h2>
+        <h1>
+            Your Future Begins Today
+        </h1>
 
         <p>
-            Discover motivation, inspiration, and positivity
-            through powerful life-changing quotes.
+            Discover motivation, positivity, and powerful quotes
+            that inspire greatness and transform your mindset.
         </p>
 
-        <button onclick="generateQuote()">
-            Generate Quote
-        </button>
+        <div class="hero-buttons">
 
-        <button onclick="copyQuote()">
-            Copy Quote
-        </>
+            <button class="btn primary" onclick="generateQuote()">
+                Generate Quote
+            </button>
 
-        <button onclick="toggleTheme()">
-            Toggle Theme
-        </button>
+            <button class="btn secondary" onclick="copyQuote()">
+                Copy Quote
+            </button>
+
+        </div>
+
+        <div class="quote-container">
+
+            <p id="dynamicQuote">
+                Click “Generate Quote” to unlock inspiration.
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
-<!-- QUOTES SECTION -->
+<!-- QUOTES -->
 
-<section class="quotes-section">
+<section class="search-section">
 
     <h2 class="section-title">
         🌟 Popular Quotes
@@ -381,94 +439,76 @@ footer{
 
         <input
             type="text"
-            id="searchInput"
             placeholder="Search quotes..."
+            id="searchInput"
             onkeyup="searchQuotes()"
         >
 
     </div>
 
-    <div class="quotes-grid">
+    <div class="quotes-grid" id="quotesGrid">
 
         <div class="quote-card">
             <div class="quote">
-                "Discipline is choosing between what you want now and what you want most."
+                “Discipline is choosing between what you want now and what you want most.”
             </div>
-            <div class="author">— Abraham Lincoln</div>
+            <div class="author">
+                — Abraham Lincoln
+            </div>
         </div>
 
         <div class="quote-card">
             <div class="quote">
-                "Success doesn’t come from motivation. It comes from consistency."
+                “Success comes from consistency.”
             </div>
-            <div class="author">— Unknown</div>
+            <div class="author">
+                — Unknown
+            </div>
         </div>
 
         <div class="quote-card">
             <div class="quote">
-                "Push yourself because nobody else is going to do it for you."
+                “Dream big. Start small. Act now.”
             </div>
-            <div class="author">— Anonymous</div>
+            <div class="author">
+                — Robin Sharma
+            </div>
         </div>
 
         <div class="quote-card">
             <div class="quote">
-                "Dream big. Start small. Act now."
+                “Every expert was once a beginner.”
             </div>
-            <div class="author">— Robin Sharma</div>
-        </div>
-
-        <div class="quote-card">
-            <div class="quote">
-                "Every expert was once a beginner."
+            <div class="author">
+                — Helen Hayes
             </div>
-            <div class="author">— Helen Hayes</div>
-        </div>
-
-        <div class="quote-card">
-            <div class="quote">
-                "Small progress is still progress."
-            </div>
-            <div class="author">— Unknown</div>
         </div>
 
     </div>
 
 </section>
 
-<!-- LIVE QUOTE -->
+<!-- STATS -->
 
-<section class="live-quote">
+<section class="stats">
 
-    <h2>⚡ Dynamic Motivation Generator</h2>
-
-    <p id="dynamicQuote">
-        Click the button above to generate inspiration.
-    </p>
-
-</section>
-
-<!-- COUNTER -->
-
-<section class="counter-section">
-
-    <h2 class="section-title">
+    <h2 class="section-title" style="text-align:center;">
         🚀 Motivation Statistics
     </h2>
 
-    <div class="counter-container">
+    <div class="stats-container">
 
-        <div class="counter-box">
+        <div class="stat-box">
             <div class="counter" id="counter1">0</div>
             <p>Quotes</p>
         </div>
 
-        <div class="counter-box">
+        <div class="stat-box">
             <div class="counter" id="counter2">0</div>
             <p>Visitors Inspired</p>
         </div>
 
-        <div class="counter-box">
+        <div class="stat-box">
             <div class="counter" id="counter3">0</div>
             <p>Dreams Started</p>
         </div>
@@ -481,7 +521,9 @@ footer{
 
 <section class="clock-section">
 
-    <h2>🕒 Current Time</h2>
+    <h2 class="section-title">
+        🕒 Current Time
+    </h2>
 
     <div id="clock"></div>
 
@@ -491,10 +533,12 @@ footer{
 
 <footer>
 
-    <h2>✨ Keep Growing Every Day ✨</h2>
+    <h2>
+        ✨ Keep Growing Every Day ✨
+    </h2>
 
-    <p style="margin-top:15px;">
-        Built with HTML, CSS & JavaScript
+    <p>
+        Designed with HTML, CSS & JavaScript
     </p>
 
 </footer>
@@ -507,21 +551,21 @@ const quotes = [
 
 "Your only limit is your mind.",
 
-"Work hard in silence. Let success make the noise.",
-
-"Success starts with self-discipline.",
-
 "Focus on progress, not perfection.",
-
-"You become what you believe.",
-
-"Never stop learning because life never stops teaching.",
-
-"Fear kills more dreams than failure ever will.",
 
 "Consistency creates greatness.",
 
-"The best time to start was yesterday. The next best time is now.",
+"The future depends on what you do today.",
+
+"Fear kills more dreams than failure ever will.",
+
+"Never stop learning.",
+
+"Push yourself because nobody else will.",
+
+"Success starts with self-discipline.",
+
+"Believe in yourself and everything becomes possible.",
 
 "Great things never come from comfort zones."
 
@@ -535,7 +579,7 @@ function generateQuote(){
         Math.floor(Math.random() * quotes.length);
 
     document.getElementById("dynamicQuote")
-        .innerHTML = '"' + quotes[random] + '"';
+    .innerHTML = '"' + quotes[random] + '"';
 
 }
 
@@ -544,11 +588,11 @@ function generateQuote(){
 function copyQuote(){
 
     let text =
-        document.getElementById("dynamicQuote").innerText;
+    document.getElementById("dynamicQuote").innerText;
 
     navigator.clipboard.writeText(text);
 
-    alert("Quote Copied!");
+    alert("Quote copied!");
 
 }
 
@@ -557,39 +601,30 @@ function copyQuote(){
 function searchQuotes(){
 
     let input =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
+    document.getElementById("searchInput")
+    .value.toLowerCase();
 
     let cards =
-        document.querySelectorAll(".quote-card");
+    document.querySelectorAll(".quote-card");
 
-    cards.forEach(function(card){
+    cards.forEach(card=>{
 
         let text =
-            card.innerText.toLowerCase();
+        card.innerText.toLowerCase();
 
         if(text.includes(input)){
 
-            card.style.display = "block";
+            card.style.display="block";
 
         }
 
         else{
 
-            card.style.display = "none";
+            card.style.display="none";
 
         }
 
     });
-
-}
-
-/* THEME */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light-mode");
 
 }
 
@@ -599,9 +634,9 @@ function animateCounter(id,target,speed){
 
     let count = 0;
 
-    let interval = setInterval(function(){
+    let interval = setInterval(()=>{
 
-        count += Math.ceil(target / speed);
+        count += Math.ceil(target/speed);
 
         if(count >= target){
 
@@ -626,11 +661,8 @@ function updateClock(){
 
     let now = new Date();
 
-    let time =
-        now.toLocaleTimeString();
-
     document.getElementById("clock")
-        .innerHTML = time;
+    .innerHTML = now.toLocaleTimeString();
 
 }
 
@@ -638,34 +670,37 @@ setInterval(updateClock,1000);
 
 updateClock();
 
-/* BACKGROUND COLORS */
+/* PARTICLES */
 
-const colors = [
+const particles =
+document.getElementById("particles");
 
-"#0f172a",
-"#111827",
-"#1e293b",
-"#172554",
-"#312e81"
+for(let i=0;i<50;i++){
 
-];
+    let span =
+    document.createElement("span");
 
-let colorIndex = 0;
+    span.style.left =
+    Math.random()*100 + "%";
 
-setInterval(function(){
+    span.style.animationDuration =
+    (Math.random()*10+10) + "s";
 
-    document.body.style.background =
-        colors[colorIndex];
+    span.style.width =
+    span.style.height =
+    Math.random()*8+5 + "px";
 
-    colorIndex++;
+    particles.appendChild(span);
 
-    if(colorIndex >= colors.length){
+}
 
-        colorIndex = 0;
+/* THEME */
 
-    }
+function toggleTheme(){
 
-},4000);
+    document.body.classList.toggle("light");
+
+}
 
 </script>
 
