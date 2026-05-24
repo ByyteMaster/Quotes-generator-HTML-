@@ -12,7 +12,7 @@ A beautiful and interactive quotes website built using HTML, CSS, and JavaScript
 - Mobile-friendly layout
 
 ## 🛠 Technologies Used
-
+ 
 - HTML5
 - CSS3
 - JavaScript
