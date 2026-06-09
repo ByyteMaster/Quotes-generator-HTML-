@@ -1,6 +1,6 @@
 # ✨ Quotes Generator Website
 
-A beautiful and interactive quotes website built using HTML, CSS, and JavaScript.
+A beautiful and interactive quotes website built using HTML, CSS, and JavaScript .
 
 ## 🚀 Features
 
